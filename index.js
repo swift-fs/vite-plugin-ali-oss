@@ -56,8 +56,9 @@ export default function vitePluginAliOss (options) {
         const outDirPath = normalizePath(path.resolve(normalizePath(buildConfig.outDir)))
 
         let {pathname: ossBasePath, origin: ossOrigin} = new URL(baseConfig)
+        console.log("ossBasePath >>>", ossBasePath)
         if (options.prefix) {
-          ossBasePath += prefix;
+          ossBasePath += options.prefix;
         }
         const createOssOption = Object.assign({}, options)
         delete createOssOption.overwrite
