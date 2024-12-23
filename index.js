@@ -1,8 +1,8 @@
-import color from 'picocolors'
-import { globSync } from 'tinyglobby'
-import path from 'path'
 import OSS from 'ali-oss'
 import { URL } from 'node:url'
+import path from 'path'
+import color from 'picocolors'
+import { globSync } from 'tinyglobby'
 
 import { normalizePath } from 'vite'
 
@@ -55,8 +55,10 @@ export default function vitePluginAliOss (options) {
 
         const outDirPath = normalizePath(path.resolve(normalizePath(buildConfig.outDir)))
 
-        const {pathname: ossBasePath, origin: ossOrigin} = new URL(baseConfig)
-
+        let {pathname: ossBasePath, origin: ossOrigin} = new URL(baseConfig)
+        if (options.prefix) {
+          pathname += prefix;
+        }
         const createOssOption = Object.assign({}, options)
         delete createOssOption.overwrite
         delete createOssOption.ignore

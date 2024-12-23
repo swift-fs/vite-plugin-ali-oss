@@ -9,6 +9,8 @@ interface Options {
   accessKeySecret: string
   /** ali cloud oss bucket */
   bucket: string
+  /** oss bucket prefix, begin with / */
+  prefix?: string
   /** If the file already exists, whether to skip upload. Default false */
   overwrite?: boolean
   /** Ignore file rules. If you use empty string `''`, no files will be ignored. Default '\*\*\/\*.html' */
@@ -40,3 +42,4 @@ interface Options {
 declare function vitePluginAliOss(options: Options): Plugin
 
 export { vitePluginAliOss as default }
+
