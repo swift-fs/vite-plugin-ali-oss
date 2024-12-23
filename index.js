@@ -57,7 +57,7 @@ export default function vitePluginAliOss (options) {
 
         let {pathname: ossBasePath, origin: ossOrigin} = new URL(baseConfig)
         if (options.prefix) {
-          pathname += prefix;
+          ossBasePath += prefix;
         }
         const createOssOption = Object.assign({}, options)
         delete createOssOption.overwrite
